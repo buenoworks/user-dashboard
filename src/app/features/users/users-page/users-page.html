@@ -1,0 +1,27 @@
+<div class="user-page">
+    <!-- campo de busca -->
+    <input type="text" placeholder="Buscar usuários..." [formControl]="searchControl" />
+
+    <!-- loading spinner -->
+    <div *ngIf="loading">
+        Carregando usuários...
+    </div>
+
+    <!-- erro -->
+    <div *ngIf="errorMessage">
+        {{ errorMessage }}
+    </div>
+
+    <div *ngIf="(filteredUsers$ | async)?.length === 0">
+        Nenhum usuário encontrado.
+      </div>
+
+    <!-- lista de usuários -->
+    <ul>
+        <li *ngFor="let user of filteredUsers$ | async">
+            <strong>{{ user.name }}</strong> —
+            {{ user.email }} —
+            {{ user.company.name }}
+        </li>
+    </ul>
+</div>
