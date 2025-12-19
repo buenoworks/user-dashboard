@@ -54,4 +54,4 @@ ng run user-dashboard:storybook
 
 ```bash
 npm install
-npm start
+ng serve
