@@ -8,6 +8,7 @@ import { usersReducer } from './app/features/users/store/users.reducer';
 import { UsersEffects } from './app/features/users/store/users.effects';
 import { provideHttpClient } from '@angular/common/http';
 import { localStorageMetaReducer } from './app/store/meta-reducers/local-storage.metareducer';
+import 'zone.js';
 
 bootstrapApplication(App, {
   providers: [
