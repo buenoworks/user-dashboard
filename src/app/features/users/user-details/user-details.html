@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="user-datails" *ngIf="user$ | async as user">
+        <div class="sub-header">
+            <button routerLink="/"> < Voltar</button> <h2>Detalhes do usuário</h2>
+        </div>
+
+        <app-user-card title="Informações do usuário">
+            <div class="line-card">
+                <strong>Nome:</strong>
+                <span>{{ user.name }}</span>
+            </div>
+            <div class="line-card">
+                <strong>Username:</strong>
+                <span>{{ user.username }}</span>
+            </div>
+        </app-user-card>
+
+
+        <app-user-card title="Contato">
+            <div class="line-card">
+                <strong>Email:</strong>
+                <span>{{ user.email }}</span>
+            </div>
+            <div class="line-card">
+                <strong>Telefone:</strong>
+                <span>{{ user.phone }}</span>
+            </div>
+            <div class="line-card">
+                <strong>Website:</strong>
+                <a [href]="'https://' + user.website" target="_blank" rel="noopener">
+                    {{ user.website }}
+                </a>
+            </div>
+        </app-user-card>
+
+        <app-user-card title="Endereço">
+            <div class="line-card">
+                <strong>Endereço:</strong>
+                <span>{{ user.address.street }}, {{ user.address.suite }} - {{ user.address.city }}</span>
+            </div>
+            <div class="line-card">
+                <strong>CEP:</strong>
+                <span>{{ user.address.zipcode }}</span>
+            </div>
+            <div class="line-card">
+                <strong>GEO:</strong>
+                <span>Lat {{ user.address.geo.lat }},
+                    Lng {{ user.address.geo.lng }}</span>
+            </div>
+        </app-user-card>
+
+        <app-user-card title="Empresa">
+            <div class="line-card">
+                <strong>Nome:</strong>
+                <span>{{ user.company.name }}</span>
+            </div>
+            <div class="line-card">
+                <strong>Slogan:</strong>
+                <span>{{ user.company.catchPhrase }}</span>
+            </div>
+            <div class="line-card">
+                <strong>Business:</strong>
+                <span>{{ user.company.bs }}</span>
+            </div>
+        </app-user-card>
+    </div>
+</div>

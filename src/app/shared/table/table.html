@@ -1,0 +1,33 @@
+<table *ngIf="!loading && (dataTable$ | async)?.length">
+    <thead>
+        <tr>
+            <th *ngFor="let col of dataColumn">{{col.label}}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let row of dataTable$ | async">
+            <td *ngFor="let col of dataColumn">
+                <ng-container [ngSwitch]="col.key">
+
+                    <!-- Ações -->
+                    <span *ngSwitchCase="'actions'">
+                        <button (click)="rowClick.emit(row)">
+                            Ver detalhes
+                        </button>
+                    </span>
+
+                    <!-- Default -->
+                    <span *ngSwitchDefault>
+                        {{ resolveValue(row, col.key) }}
+                    </span>
+
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="empty-state" *ngIf="!loading && (dataTable$ | async)?.length === 0">
+    Nenhum registro encontrado.
+</div>

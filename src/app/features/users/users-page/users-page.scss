@@ -1,0 +1,16 @@
+.user-page {
+    .search-area {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+
+        .icon-search {
+            width: 35px;
+            height: 35px;
+            background-image: var(--logo-search-url);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}

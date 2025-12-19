@@ -1,27 +1,27 @@
-<div class="user-page">
-    <!-- campo de busca -->
-    <input type="text" placeholder="Buscar usuários..." [formControl]="searchControl" />
+<div class="container">
+    <div class="user-page">
+        <!-- campo de busca -->
 
-    <!-- loading spinner -->
-    <div *ngIf="loading">
-        Carregando usuários...
+        <div class="search-area">
+           <div class="icon-search"></div><app-search-input [formControl]="searchControl" [placeholder]="'Pesquise aqui!'"></app-search-input>
+        </div>
+
+        <div class="table-area">
+            <app-table 
+            [dataColumn]="columnsTable" 
+            [dataTable$]="filteredUsers$" 
+            [loading]="(isLoading$ | async) ?? false"
+            (rowClick)="goToDetails($event)"></app-table>
+        </div>
+
+        <!--  <div *ngIf="(filteredUsers$ | async)?.length === 0">
+            Nenhum usuário encontrado.
+        </div> -->
+
     </div>
+</div>
 
-    <!-- erro -->
-    <div *ngIf="errorMessage">
-        {{ errorMessage }}
-    </div>
-
-    <div *ngIf="(filteredUsers$ | async)?.length === 0">
-        Nenhum usuário encontrado.
-      </div>
-
-    <!-- lista de usuários -->
-    <ul>
-        <li *ngFor="let user of filteredUsers$ | async">
-            <strong>{{ user.name }}</strong> —
-            {{ user.email }} —
-            {{ user.company.name }}
-        </li>
-    </ul>
+<!-- erro -->
+<div *ngIf="errorMessage">
+    {{ errorMessage }}
 </div>

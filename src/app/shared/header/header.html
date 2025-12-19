@@ -1,0 +1,19 @@
+<div class="header">
+    <div class="container">
+        <div class="content-header">
+            <div class="logo">
+            </div>
+
+            <div class="info-header">
+                Teste em uma aplicação Angular!
+            </div>
+
+            <div class="btn-tema">
+                <button class="theme-toggle" (click)="toggleTheme()" aria-label="Alternar tema">
+                    <span *ngIf="themeService.currentTheme === 'light'">🌙</span>
+                    <span *ngIf="themeService.currentTheme === 'dark'">☀️</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

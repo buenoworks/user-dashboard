@@ -1,0 +1,36 @@
+table {
+    border-collapse: collapse; 
+    border-spacing: 0;
+    margin: 0;
+    width: 100%;
+    color: var(--text-color);
+
+    thead {
+        tr {
+            border: 1px solid var(--border-strong);
+            background-color: var(--table-head-bg);
+
+            th {
+                font-weight: 500;
+                text-align: left;
+                padding: 10px;
+                border-left: 1px solid var(--border-strong);
+
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border: 1px solid var(--border-color);
+
+            &:nth-child(odd) {
+                background-color: var(--row-alt-bg);
+            }
+
+            td {
+                padding: 10px;
+            }
+        }
+    }
+}
