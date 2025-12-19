@@ -1,0 +1,2793 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "LoadingState",
+            "id": "interface-LoadingState-f55149950dd962e79b47ea19092de7ce25a4b933c6a3827ec847bc046fd65d12c7dc96a58a8fc1456a2a64ab7f5a639c4c630b3a1f9452dfd862fd6de06a41a1",
+            "file": "src/app/store/loading/loading.reducer.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { createReducer, on } from '@ngrx/store';\r\nimport { startLoading, stopLoading } from './loading.actions';\r\n\r\nexport interface LoadingState {\r\n  loading: boolean;\r\n}\r\n\r\nexport const initialLoadingState: LoadingState = {\r\n  loading: false\r\n};\r\n\r\nexport const loadingReducer = createReducer(\r\n  initialLoadingState,\r\n  on(startLoading, () => ({ loading: true })),\r\n  on(stopLoading,  () => ({ loading: false }))\r\n);\r\n",
+            "properties": [
+                {
+                    "name": "loading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "TableColumn",
+            "id": "interface-TableColumn-7a7e5bfbff5bb0ebf462d17af3eb7d30750ff7d206f20a56f43f0c433b4b5a4f650ad68eddf8e8ec91f8de2b52959646293c4b1928b18c150829150dfa93bea6",
+            "file": "src/app/shared/table/table.models.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface TableColumn {\r\n    key: string;\r\n    label: string;\r\n  }",
+            "properties": [
+                {
+                    "name": "key",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-2fcecb23c407746996dbfacc8381d94788596a2f5dc820a073c5e4239e083c6bad69464268db803d2eca8ef55dfeae0f642cb7e7015e100546e311a6d12b2966",
+            "file": "src/app/features/users/users.service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { HttpClient } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Observable } from 'rxjs';\r\nimport { delay } from 'rxjs/operators';\r\n\r\nexport interface User {\r\n  id: number;\r\n  name: string;\r\n  username: string;\r\n  email: string;\r\n\r\n  address: {\r\n    street: string;\r\n    suite: string;\r\n    city: string;\r\n    zipcode: string;\r\n    geo: {\r\n      lat: string;\r\n      lng: string;\r\n    };\r\n  };\r\n\r\n  phone: string;\r\n  website: string;\r\n\r\n  company: {\r\n    name: string;\r\n    catchPhrase: string;\r\n    bs: string;\r\n  };\r\n}\r\n\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class UsersService {\r\n  private baseUrl = 'https://jsonplaceholder.typicode.com/users';\r\n  \r\n  constructor(private http: HttpClient) {}\r\n\r\n  getAllUsers(): Observable<User[]> {\r\n    return this.http.get<User[]>(this.baseUrl).pipe(\r\n      delay(500) // Delay de 5 segundos para visualização do loading\r\n    );\r\n  }\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "address",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "company",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "email",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "phone",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "username",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "website",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "UserMock",
+            "id": "interface-UserMock-996a1decab99115ff16b673d7d08f52c806e698c6fd320c41b343d64ed36d85e72ab14f44ab8df47a4b662e989817edc11e2af70f21dad1221fe310822843e92",
+            "file": "src/stories/table.stories.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import type { Meta, StoryObj } from '@storybook/angular';\r\nimport { of } from 'rxjs';\r\nimport { Table } from '../app/shared/table/table';\r\n\r\ninterface UserMock {\r\n  id: number;\r\n  name: string;\r\n  email: string;\r\n  company: {\r\n    name: string;\r\n  };\r\n}\r\n\r\nconst mockUsers: UserMock[] = [\r\n  {\r\n    id: 1,\r\n    name: 'Leanne Graham',\r\n    email: 'leanne@email.com',\r\n    company: { name: 'Romaguera-Crona' },\r\n  },\r\n  {\r\n    id: 2,\r\n    name: 'Ervin Howell',\r\n    email: 'ervin@email.com',\r\n    company: { name: 'Deckow-Crist' },\r\n  },\r\n];\r\n\r\nconst columns = [\r\n  { key: 'name', label: 'Nome' },\r\n  { key: 'email', label: 'E-mail' },\r\n  { key: 'company.name', label: 'Empresa' },\r\n  { key: 'actions', label: 'Ações' },\r\n];\r\n\r\nconst meta: Meta<Table<UserMock>> = {\r\n  title: 'Shared/Table',\r\n  component: Table,\r\n};\r\n\r\nexport default meta;\r\ntype Story = StoryObj<Table<UserMock>>;\r\n\r\nexport const Default: Story = {\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of(mockUsers),\r\n    loading: false,\r\n  },\r\n};\r\n\r\nexport const Loading: Story = {\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of([]),\r\n    loading: true,\r\n  },\r\n};\r\n\r\nexport const EmptyState: Story = {\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of([]),\r\n    loading: false,\r\n  },\r\n};\r\n\r\nexport const RowClick: Story = {\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of(mockUsers),\r\n    loading: false,\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const row = canvasElement.querySelector('tbody tr');\r\n    row?.dispatchEvent(new MouseEvent('click', { bubbles: true }));\r\n  },\r\n};\r\n",
+            "properties": [
+                {
+                    "name": "company",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "email",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "UsersState",
+            "id": "interface-UsersState-fac37e00c64338a2e6254993ed0eab96749f5d4321699f0d1e235b2cea8af0e6dfe61a2233872144a1b2aab3c25d247c86332c2efd6fded6d0ab785dbe299c2c",
+            "file": "src/app/features/users/store/users.reducer.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { createReducer, on } from '@ngrx/store';\r\nimport { loadUsers, loadUsersSuccess, loadUsersFailure } from './users.actions';\r\nimport { User } from '../users.service';\r\n\r\nexport interface UsersState {\r\n  users: User[];\r\n  error: unknown | null;\r\n}\r\n\r\nconst savedUsers = localStorage.getItem('users');\r\n\r\nexport const initialState: UsersState = {\r\n  users: savedUsers ? JSON.parse(savedUsers) : [],\r\n  error: null\r\n};\r\n\r\nexport const usersReducer = createReducer(\r\n  initialState,\r\n  on(loadUsers, state => ({ ...state, error: null })),\r\n  on(loadUsersSuccess, (state, { users }) => ({ ...state, users })),\r\n  on(loadUsersFailure, (state, { error }) => ({ ...state, error }))\r\n);\r\n",
+            "properties": [
+                {
+                    "name": "error",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "users",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "ThemeService",
+            "id": "injectable-ThemeService-4707c180e3faa02bf9839e853acef401c7c8093d9d6b3537f54a4671a9128f1fb22b31b62c18d6e904727795849caca93c8cee639480b7570e70dae958948e7c",
+            "file": "src/app/shared/theme/theme.service.ts",
+            "properties": [
+                {
+                    "name": "storageKey",
+                    "defaultValue": "'app-theme'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "initTheme",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "setTheme",
+                    "args": [
+                        {
+                            "name": "theme",
+                            "type": "Theme",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "theme",
+                            "type": "Theme",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleTheme",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\ntype Theme = 'light' | 'dark';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class ThemeService {\r\n  private storageKey = 'app-theme';\r\n\r\n  get currentTheme(): Theme {\r\n    return document.documentElement.getAttribute('data-theme') as Theme || 'light';\r\n  }\r\n\r\n  initTheme() {\r\n    const savedTheme = localStorage.getItem(this.storageKey) as Theme;\r\n    this.setTheme(savedTheme || 'light');\r\n  }\r\n\r\n  toggleTheme() {\r\n    this.setTheme(this.currentTheme === 'dark' ? 'light' : 'dark');\r\n  }\r\n\r\n  setTheme(theme: Theme) {\r\n    document.documentElement.setAttribute('data-theme', theme);\r\n    localStorage.setItem(this.storageKey, theme);\r\n  }\r\n}\r\n",
+            "accessors": {
+                "currentTheme": {
+                    "name": "currentTheme",
+                    "getSignature": {
+                        "name": "currentTheme",
+                        "type": "unknown",
+                        "returnType": "Theme",
+                        "line": 11
+                    }
+                }
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "UsersEffects",
+            "id": "injectable-UsersEffects-351c9a418f23ef6af4163bc2e9e67be22d87b984964bb5ba2f465caa3188a08f496fcadb9f6c4937dbbd0d1178468041a88559a94571e9407cece230709786dd",
+            "file": "src/app/features/users/store/users.effects.ts",
+            "properties": [
+                {
+                    "name": "actions$",
+                    "defaultValue": "inject(Actions)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "loadUsers$",
+                    "defaultValue": "createEffect(() =>\r\n    this.actions$.pipe(\r\n      ofType(loadUsers),\r\n      switchMap(() => [\r\n        startLoading()\r\n      ])\r\n    )\r\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "loadUsersApi$",
+                    "defaultValue": "createEffect(() =>\r\n    this.actions$.pipe(\r\n      ofType(loadUsers),\r\n      switchMap(() =>\r\n        this.usersService.getAllUsers().pipe(\r\n          map(users => loadUsersSuccess({ users })),\r\n          catchError(error => of(loadUsersFailure({ error })))\r\n        )\r\n      )\r\n    )\r\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "stopLoading$",
+                    "defaultValue": "createEffect(() =>\r\n    this.actions$.pipe(\r\n      ofType(loadUsersSuccess, loadUsersFailure),\r\n      map(() => stopLoading())\r\n    )\r\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42
+                },
+                {
+                    "name": "usersService",
+                    "defaultValue": "inject(UsersService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { inject, Injectable } from '@angular/core';\r\nimport { Actions, createEffect, ofType } from '@ngrx/effects';\r\nimport { UsersService } from '../users.service';\r\nimport {\r\n  loadUsers,\r\n  loadUsersSuccess,\r\n  loadUsersFailure\r\n} from './users.actions';\r\nimport {\r\n  startLoading,\r\n  stopLoading\r\n} from '../../../store/loading/loading.actions';\r\nimport { switchMap, map, catchError } from 'rxjs/operators';\r\nimport { of } from 'rxjs';\r\n\r\n@Injectable()\r\nexport class UsersEffects {\r\n  private actions$ = inject(Actions);\r\n  private usersService = inject(UsersService);\r\n\r\n  loadUsers$ = createEffect(() =>\r\n    this.actions$.pipe(\r\n      ofType(loadUsers),\r\n      switchMap(() => [\r\n        startLoading()\r\n      ])\r\n    )\r\n  );\r\n\r\n  loadUsersApi$ = createEffect(() =>\r\n    this.actions$.pipe(\r\n      ofType(loadUsers),\r\n      switchMap(() =>\r\n        this.usersService.getAllUsers().pipe(\r\n          map(users => loadUsersSuccess({ users })),\r\n          catchError(error => of(loadUsersFailure({ error })))\r\n        )\r\n      )\r\n    )\r\n  );\r\n\r\n  stopLoading$ = createEffect(() =>\r\n    this.actions$.pipe(\r\n      ofType(loadUsersSuccess, loadUsersFailure),\r\n      map(() => stopLoading())\r\n    )\r\n  );\r\n}\r\n",
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "UsersService",
+            "id": "injectable-UsersService-2fcecb23c407746996dbfacc8381d94788596a2f5dc820a073c5e4239e083c6bad69464268db803d2eca8ef55dfeae0f642cb7e7015e100546e311a6d12b2966",
+            "file": "src/app/features/users/users.service.ts",
+            "properties": [
+                {
+                    "name": "baseUrl",
+                    "defaultValue": "'https://jsonplaceholder.typicode.com/users'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getAllUsers",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<User[]>",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { HttpClient } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Observable } from 'rxjs';\r\nimport { delay } from 'rxjs/operators';\r\n\r\nexport interface User {\r\n  id: number;\r\n  name: string;\r\n  username: string;\r\n  email: string;\r\n\r\n  address: {\r\n    street: string;\r\n    suite: string;\r\n    city: string;\r\n    zipcode: string;\r\n    geo: {\r\n      lat: string;\r\n      lng: string;\r\n    };\r\n  };\r\n\r\n  phone: string;\r\n  website: string;\r\n\r\n  company: {\r\n    name: string;\r\n    catchPhrase: string;\r\n    bs: string;\r\n  };\r\n}\r\n\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class UsersService {\r\n  private baseUrl = 'https://jsonplaceholder.typicode.com/users';\r\n  \r\n  constructor(private http: HttpClient) {}\r\n\r\n  getAllUsers(): Observable<User[]> {\r\n    return this.http.get<User[]>(this.baseUrl).pipe(\r\n      delay(500) // Delay de 5 segundos para visualização do loading\r\n    );\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 38,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "App",
+            "id": "component-App-cf005576255b12a1d637d7a46da1b6ec3f38bbc5cbb4e2fc9390a5a89fe7fe9f30ca45c587ffd4ec59e71c4968826e253dabed7ee650c8269aa61bfd8c125bc0",
+            "file": "src/app/app.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "signal('user-dashboard')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "LoadingSpinner"
+                },
+                {
+                    "name": "Header"
+                },
+                {
+                    "name": "Footer"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, signal } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { LoadingSpinner } from './shared/loading-spinner/loading-spinner';\r\nimport { Header } from './shared/header/header';\r\nimport { Footer } from './shared/footer/footer';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, LoadingSpinner, Header, Footer],\r\n  templateUrl: './app.html',\r\n  styleUrl: './app.scss'\r\n})\r\nexport class App {\r\n  protected readonly title = signal('user-dashboard');\r\n}\r\n",
+            "styleUrl": "./app.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-loading-spinner></app-loading-spinner>\r\n\r\n<app-header></app-header>\r\n<div class=\"main-content\">\r\n  <router-outlet />\r\n</div>\r\n<app-footer></app-footer>\r\n"
+        },
+        {
+            "name": "Footer",
+            "id": "component-Footer-96074dfd2e3aade766773c8c4f70163520db5ab01ee8e64b66d84993623ffd32c1a3d882dcf08908c178fc92b4c796c255dfd0fbcaa277f3c5b24628dcea7735",
+            "file": "src/app/shared/footer/footer.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-footer",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./footer.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-footer',\r\n  imports: [],\r\n  templateUrl: './footer.html',\r\n  styleUrl: './footer.scss',\r\n})\r\nexport class Footer {\r\n\r\n}\r\n",
+            "styleUrl": "./footer.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"footer\">\r\n    <div class=\"container\">\r\n        <div class=\"content-footer\">\r\n            <div class=\"left\">Desenvolvido por: Andre Bueno</div>\r\n        </div>\r\n    </div>\r\n</div>"
+        },
+        {
+            "name": "Header",
+            "id": "component-Header-2f27d799fe1e619b03c6991f6444e7fa2bb5fea1d0c5aa76b85e4127d4d26ca845897b21f219588c9f2aa813d5e711388042569a943bab5fd05d6d25b773922c",
+            "file": "src/app/shared/header/header.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./header.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "themeService",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ThemeService",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "toggleTheme",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ThemeService } from '../theme/theme.service';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './header.html',\r\n  styleUrl: './header.scss',\r\n})\r\nexport class Header {\r\n  constructor(public themeService: ThemeService) {}\r\n\r\n  toggleTheme() {\r\n    this.themeService.toggleTheme();\r\n  }\r\n}\r\n",
+            "styleUrl": "./header.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "themeService",
+                        "type": "ThemeService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "themeService",
+                        "type": "ThemeService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"header\">\r\n    <div class=\"container\">\r\n        <div class=\"content-header\">\r\n            <div class=\"logo\">\r\n            </div>\r\n\r\n            <div class=\"info-header\">\r\n                Teste em uma aplicação Angular!\r\n            </div>\r\n\r\n            <div class=\"btn-tema\">\r\n                <button class=\"theme-toggle\" (click)=\"toggleTheme()\" aria-label=\"Alternar tema\">\r\n                    <span *ngIf=\"themeService.currentTheme === 'light'\">🌙</span>\r\n                    <span *ngIf=\"themeService.currentTheme === 'dark'\">☀️</span>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+        },
+        {
+            "name": "LoadingSpinner",
+            "id": "component-LoadingSpinner-47a36e12b76dbcf50b8e36a7fee6a8ed5fd084970f78a889728414f5277b0337540fa5b6cbff2e71395c3c7aceb485c692693b4925142fc3630f9d006af1a22c",
+            "file": "src/app/shared/loading-spinner/loading-spinner.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-loading-spinner",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./loading-spinner.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isLoading$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { selectIsLoading } from '../../store/loading/loading.selectors';\r\nimport { Store } from '@ngrx/store';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n\r\n@Component({\r\n  selector: 'app-loading-spinner',\r\n  templateUrl: './loading-spinner.html',\r\n  styleUrl: './loading-spinner.scss',\r\n  standalone: true,\r\n  imports: [CommonModule]\r\n})\r\nexport class LoadingSpinner {\r\n  isLoading$;\r\n  \r\n  constructor(private store: Store) {\r\n    this.isLoading$ = this.store.select(selectIsLoading);\r\n  }\r\n\r\n}\r\n",
+            "styleUrl": "./loading-spinner.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"background-loading\" *ngIf=\"isLoading$ | async\">\r\n    <div class=\"loader\"></div>\r\n</div>\r\n"
+        },
+        {
+            "name": "SearchInput",
+            "id": "component-SearchInput-d0f677cf90eba5e6bd17b8eeb35649348667867d3b9d8237ff01fbd886a8380e97246f97a905190c3376bd23c2ebcfd5d0275dd1022024db29064e2e3d62e504",
+            "file": "src/app/shared/search-input/search-input.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": ")"
+                }
+            ],
+            "selector": "app-search-input",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./search-input.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "placeholder",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onBlur",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onInput",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, forwardRef, Input } from '@angular/core';\r\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'app-search-input',\r\n  templateUrl: './search-input.html',\r\n  styleUrl: './search-input.scss',\r\n  standalone: true,\r\n  imports: [ CommonModule ],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => SearchInput),\r\n      multi: true\r\n    }\r\n  ]\r\n})\r\nexport class SearchInput implements ControlValueAccessor {\r\n  @Input() placeholder: string = '';\r\n\r\n  private onChange = (value: string) => {};\r\n  private onTouched = () => {};\r\n\r\n  value = '';\r\n  disabled = false;\r\n\r\n  writeValue(value: string): void {\r\n    this.value = value ?? '';\r\n  }\r\n\r\n  registerOnChange(fn: (value: string) => void): void {\r\n    this.onChange = fn;\r\n  }\r\n\r\n  registerOnTouched(fn: () => void): void {\r\n    this.onTouched = fn;\r\n  }\r\n\r\n  setDisabledState(isDisabled: boolean): void {\r\n    this.disabled = isDisabled;\r\n  }\r\n\r\n  onInput(event: Event) {\r\n    const value = (event.target as HTMLInputElement).value;\r\n    this.value = value;\r\n    this.onChange(value);\r\n  }\r\n\r\n  onBlur() {\r\n    this.onTouched();\r\n  }\r\n\r\n}\r\n",
+            "styleUrl": "./search-input.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "templateData": "<input \r\n    type=\"text\" \r\n    [value]=\"value\"\r\n    [placeholder]=\"placeholder\"\r\n    [disabled]=\"disabled\"\r\n    (input)=\"onInput($event)\"\r\n    (blur)=\"onBlur()\" />"
+        },
+        {
+            "name": "Table",
+            "id": "component-Table-ff08d2a4e7543b671490bb66d3fa08bb89bad58857edff30976ce6cd801e4f8914a475283986eb55f84671c3638c468275107ba94a70b8b7038b9f83b5e9f160",
+            "file": "src/app/shared/table/table.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./table.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "dataColumn",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "dataTable$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Observable<T[]>",
+                    "decorators": []
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "rowClick",
+                    "defaultValue": "new EventEmitter<T>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "resolveValue",
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { User } from '../../features/users/users.service';\r\nimport { Observable } from 'rxjs';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './table.html',\r\n  styleUrl: './table.scss',\r\n})\r\nexport class Table<T = any> {\r\n  @Input() dataColumn: any;\r\n  @Input() dataTable$!: Observable<T[]>;\r\n  @Input() loading = false;\r\n  \r\n  @Output() rowClick = new EventEmitter<T>();\r\n\r\n  resolveValue(row: any, path: string): any {\r\n    return path\r\n      .split('.')\r\n      .reduce((acc, key) => acc?.[key], row);\r\n  }\r\n}\r\n",
+            "styleUrl": "./table.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<table *ngIf=\"!loading && (dataTable$ | async)?.length\">\r\n    <thead>\r\n        <tr>\r\n            <th *ngFor=\"let col of dataColumn\">{{col.label}}</th>\r\n        </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n        <tr *ngFor=\"let row of dataTable$ | async\">\r\n            <td *ngFor=\"let col of dataColumn\">\r\n                <ng-container [ngSwitch]=\"col.key\">\r\n\r\n                    <!-- Ações -->\r\n                    <span *ngSwitchCase=\"'actions'\">\r\n                        <button (click)=\"rowClick.emit(row)\">\r\n                            Ver detalhes\r\n                        </button>\r\n                    </span>\r\n\r\n                    <!-- Default -->\r\n                    <span *ngSwitchDefault>\r\n                        {{ resolveValue(row, col.key) }}\r\n                    </span>\r\n\r\n                </ng-container>\r\n            </td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n\r\n<div class=\"empty-state\" *ngIf=\"!loading && (dataTable$ | async)?.length === 0\">\r\n    Nenhum registro encontrado.\r\n</div>"
+        },
+        {
+            "name": "UserCard",
+            "id": "component-UserCard-8bd6f46029e077f7e2e0745e59fd446d661c6cf2d6ec7be052ab18282706ab7d01c87f9b9595159eb2eb43456e5574cb892021204a88622b7302b5289b840dfb",
+            "file": "src/app/shared/user-card/user-card.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-card",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-card.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-user-card',\r\n  standalone:true,\r\n  imports: [CommonModule],\r\n  templateUrl: './user-card.html',\r\n  styleUrl: './user-card.scss',\r\n})\r\nexport class UserCard {\r\n  @Input() title = '';\r\n}\r\n",
+            "styleUrl": "./user-card.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"user-card\">\r\n    <div class=\"title-card\">\r\n        <h3>{{ title }}</h3>\r\n    </div>\r\n\r\n    <div class=\"content-card\">\r\n        <ng-content></ng-content>\r\n    </div>\r\n</div>"
+        },
+        {
+            "name": "UserDetails",
+            "id": "component-UserDetails-242c982e30ef6c533fe03a9110a1b0a4c2f2214954d73001e57c42acf5cdb5c3f46c2740cfb2543aeb55e31ece6e330d0987df954e7c1d44ed49e8bfd48e45ae",
+            "file": "src/app/features/users/user-details/user-details.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-details",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./user-details.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "user$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<User | undefined>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "UserCard"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\n\r\nimport { ActivatedRoute, RouterModule } from '@angular/router';\r\nimport { Store } from '@ngrx/store';\r\nimport { map, switchMap, tap } from 'rxjs/operators';\r\nimport { combineLatest, Observable } from 'rxjs';\r\nimport { User } from '../users.service';\r\nimport { selectAllUsers } from '../store/users.selectors';\r\nimport { loadUsers } from '../store/users.actions';\r\nimport { UserCard } from '../../../shared/user-card/user-card';\r\n\r\n@Component({\r\n  selector: 'app-user-details',\r\n  standalone: true,\r\n  imports: [CommonModule, UserCard, RouterModule],\r\n  templateUrl: './user-details.html',\r\n  styleUrl: './user-details.scss',\r\n})\r\nexport class UserDetails {\r\n\r\n  user$!: Observable<User | undefined>;\r\n\r\n  constructor(\r\n    private route: ActivatedRoute,\r\n    private store: Store\r\n  ) {\r\n\r\n    const userId$ = this.route.paramMap.pipe(\r\n      map(params => Number(params.get('id')))\r\n    );\r\n\r\n    const users$ = this.store.select(selectAllUsers).pipe(\r\n      tap(users => {\r\n        if (!users.length) {\r\n          this.store.dispatch(loadUsers());\r\n        }\r\n      })\r\n    );\r\n\r\n    this.user$ = combineLatest([userId$, users$]).pipe(\r\n      map(([id, users]) => users.find(u => u.id === id))\r\n    );\r\n  }\r\n}\r\n",
+            "styleUrl": "./user-details.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 22,
+                "jsdoctags": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"container\">\r\n    <div class=\"user-datails\" *ngIf=\"user$ | async as user\">\r\n        <div class=\"sub-header\">\r\n            <button routerLink=\"/\"> < Voltar</button> <h2>Detalhes do usuário</h2>\r\n        </div>\r\n\r\n        <app-user-card title=\"Informações do usuário\">\r\n            <div class=\"line-card\">\r\n                <strong>Nome:</strong>\r\n                <span>{{ user.name }}</span>\r\n            </div>\r\n            <div class=\"line-card\">\r\n                <strong>Username:</strong>\r\n                <span>{{ user.username }}</span>\r\n            </div>\r\n        </app-user-card>\r\n\r\n\r\n        <app-user-card title=\"Contato\">\r\n            <div class=\"line-card\">\r\n                <strong>Email:</strong>\r\n                <span>{{ user.email }}</span>\r\n            </div>\r\n            <div class=\"line-card\">\r\n                <strong>Telefone:</strong>\r\n                <span>{{ user.phone }}</span>\r\n            </div>\r\n            <div class=\"line-card\">\r\n                <strong>Website:</strong>\r\n                <a [href]=\"'https://' + user.website\" target=\"_blank\" rel=\"noopener\">\r\n                    {{ user.website }}\r\n                </a>\r\n            </div>\r\n        </app-user-card>\r\n\r\n        <app-user-card title=\"Endereço\">\r\n            <div class=\"line-card\">\r\n                <strong>Endereço:</strong>\r\n                <span>{{ user.address.street }}, {{ user.address.suite }} - {{ user.address.city }}</span>\r\n            </div>\r\n            <div class=\"line-card\">\r\n                <strong>CEP:</strong>\r\n                <span>{{ user.address.zipcode }}</span>\r\n            </div>\r\n            <div class=\"line-card\">\r\n                <strong>GEO:</strong>\r\n                <span>Lat {{ user.address.geo.lat }},\r\n                    Lng {{ user.address.geo.lng }}</span>\r\n            </div>\r\n        </app-user-card>\r\n\r\n        <app-user-card title=\"Empresa\">\r\n            <div class=\"line-card\">\r\n                <strong>Nome:</strong>\r\n                <span>{{ user.company.name }}</span>\r\n            </div>\r\n            <div class=\"line-card\">\r\n                <strong>Slogan:</strong>\r\n                <span>{{ user.company.catchPhrase }}</span>\r\n            </div>\r\n            <div class=\"line-card\">\r\n                <strong>Business:</strong>\r\n                <span>{{ user.company.bs }}</span>\r\n            </div>\r\n        </app-user-card>\r\n    </div>\r\n</div>"
+        },
+        {
+            "name": "UsersPage",
+            "id": "component-UsersPage-6c41b0eea711347ccf39c1674b4908c6cfb9dd9691f0c125689753fd6ee77657d62a464e8aec2402d424c00921ac3e5f7e4c8bbed1548661b5d151db2935c063",
+            "file": "src/app/features/users/users-page/users-page.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-users-page",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./users-page.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "columnsTable",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TableColumn[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "errorMessage",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "filteredUsers$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<User[]>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "isLoading$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "searchControl",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "users$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<User[]>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "goToDetails",
+                    "args": [
+                        {
+                            "name": "user",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "user",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "SearchInput"
+                },
+                {
+                    "name": "Table"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, OnInit } from '@angular/core';\r\nimport { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { Observable, of } from 'rxjs';\r\nimport { switchMap, debounceTime, startWith, map, catchError } from 'rxjs/operators';\r\nimport { User } from '../users.service';\r\nimport { Store } from '@ngrx/store';\r\nimport { selectAllUsers } from '../store/users.selectors';\r\nimport { loadUsers } from '../store/users.actions';\r\nimport { SearchInput } from '../../../shared/search-input/search-input';\r\nimport { Table } from '../../../shared/table/table';\r\nimport { TableColumn } from '../../../shared/table/table.models';\r\nimport { selectIsLoading } from '../../../store/loading/loading.selectors';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-users-page',\r\n  templateUrl: './users-page.html',\r\n  styleUrl: './users-page.scss',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchInput, Table],\r\n})\r\nexport class UsersPage implements OnInit {\r\n  searchControl = new FormControl('');\r\n\r\n  columnsTable: TableColumn[] = [];\r\n  users$!: Observable<User[]>;\r\n  filteredUsers$!: Observable<User[]>;\r\n\r\n  loading = false;\r\n  errorMessage = '';\r\n\r\n  isLoading$: any;\r\n\r\n\r\n  constructor(private store: Store, private router: Router) {\r\n    this.isLoading$ = this.store.select(selectIsLoading);\r\n  }\r\n\r\n  ngOnInit() {\r\n    this.store.dispatch(loadUsers());\r\n    this.users$ = this.store.select(selectAllUsers)\r\n    \r\n\r\n    this.columnsTable = [\r\n      { key: 'name', label: 'Nome' },\r\n      { key: 'email', label: 'E-mail' },\r\n      { key: 'company.name', label: 'Empresa' },\r\n      { key: 'actions', label: 'Ações' }\r\n    ]\r\n    \r\n    // busca local com debounce\r\n    this.filteredUsers$ = this.searchControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(300),\r\n      switchMap(searchText => {\r\n        const text = searchText?.toLowerCase() ?? '';\r\n        return this.users$.pipe(\r\n          map(users =>\r\n            users.filter(u =>\r\n              u.name.toLowerCase().includes(text) ||\r\n              u.email.toLowerCase().includes(text) ||\r\n              u.company?.name.toLowerCase().includes(text)\r\n            )\r\n          )\r\n        );\r\n      })\r\n    );\r\n  }\r\n\r\n  goToDetails(user: any) {\r\n    this.router.navigate(['/users', user.id]);\r\n  }\r\n}\r\n",
+            "styleUrl": "./users-page.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 33,
+                "jsdoctags": [
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"container\">\r\n    <div class=\"user-page\">\r\n        <!-- campo de busca -->\r\n\r\n        <div class=\"search-area\">\r\n           <div class=\"icon-search\"></div><app-search-input [formControl]=\"searchControl\" [placeholder]=\"'Pesquise aqui!'\"></app-search-input>\r\n        </div>\r\n\r\n        <div class=\"table-area\">\r\n            <app-table \r\n            [dataColumn]=\"columnsTable\" \r\n            [dataTable$]=\"filteredUsers$\" \r\n            [loading]=\"(isLoading$ | async) ?? false\"\r\n            (rowClick)=\"goToDetails($event)\"></app-table>\r\n        </div>\r\n\r\n        <!--  <div *ngIf=\"(filteredUsers$ | async)?.length === 0\">\r\n            Nenhum usuário encontrado.\r\n        </div> -->\r\n\r\n    </div>\r\n</div>\r\n\r\n<!-- erro -->\r\n<div *ngIf=\"errorMessage\">\r\n    {{ errorMessage }}\r\n</div>"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\r\n  providers: [\r\n    provideBrowserGlobalErrorListeners(),\r\n    provideRouter(routes)\r\n  ]\r\n}"
+            },
+            {
+                "name": "columns",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  { key: 'name', label: 'Nome' },\r\n  { key: 'email', label: 'E-mail' },\r\n  { key: 'company.name', label: 'Empresa' },\r\n  { key: 'actions', label: 'Ações' },\r\n]"
+            },
+            {
+                "name": "config",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": ".storybook/main.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StorybookConfig",
+                "defaultValue": "{\r\n  stories: ['../src/**/*.stories.ts'],\r\n  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],\r\n\r\n  framework: {\r\n    name: '@storybook/angular',\r\n    options: {},\r\n  },\r\n\r\n  docs: {\r\n    autodocs: true\r\n  }\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/search-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  render: (args) => ({\r\n    props: {\r\n      ...args,\r\n      control: new FormControl(''),\r\n    },\r\n    template: `\r\n      <app-search-input\r\n        [placeholder]=\"placeholder\"\r\n        [formControl]=\"control\">\r\n      </app-search-input>\r\n    `,\r\n  }),\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of(mockUsers),\r\n    loading: false,\r\n  },\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/user-card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "StoryObj<UserCard>",
+                "defaultValue": "{\r\n  args: {\r\n    title: 'Informações do usuário',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `\r\n      <app-user-card [title]=\"title\">\r\n        <div><strong>Nome:</strong> John Doe</div>\r\n      </app-user-card>\r\n    `,\r\n  }),\r\n}"
+            },
+            {
+                "name": "EmptyState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of([]),\r\n    loading: false,\r\n  },\r\n}"
+            },
+            {
+                "name": "initialLoadingState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/loading/loading.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "LoadingState",
+                "defaultValue": "{\r\n  loading: false\r\n}"
+            },
+            {
+                "name": "initialState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "UsersState",
+                "defaultValue": "{\r\n  users: savedUsers ? JSON.parse(savedUsers) : [],\r\n  error: null\r\n}"
+            },
+            {
+                "name": "Loading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of([]),\r\n    loading: true,\r\n  },\r\n}"
+            },
+            {
+                "name": "loadingReducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/loading/loading.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createReducer(\r\n  initialLoadingState,\r\n  on(startLoading, () => ({ loading: true })),\r\n  on(stopLoading,  () => ({ loading: false }))\r\n)"
+            },
+            {
+                "name": "loadUsers",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createAction('[Users] Load')"
+            },
+            {
+                "name": "loadUsersFailure",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createAction(\r\n    '[Users] Load Failure',\r\n    props<{ error: unknown }>()\r\n)"
+            },
+            {
+                "name": "loadUsersSuccess",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createAction(\r\n    '[Users] Load Success',\r\n    props<{ users: User[] }>()\r\n)"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/search-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SearchInput>",
+                "defaultValue": "{\r\n  title: 'Shared/SearchInput',\r\n  component: SearchInput,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule],\r\n    }),\r\n  ],\r\n  args: {\r\n    placeholder: 'Pesquisar...',\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<Table<UserMock>>",
+                "defaultValue": "{\r\n  title: 'Shared/Table',\r\n  component: Table,\r\n}"
+            },
+            {
+                "name": "mockUsers",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "UserMock[]",
+                "defaultValue": "[\r\n  {\r\n    id: 1,\r\n    name: 'Leanne Graham',\r\n    email: 'leanne@email.com',\r\n    company: { name: 'Romaguera-Crona' },\r\n  },\r\n  {\r\n    id: 2,\r\n    name: 'Ervin Howell',\r\n    email: 'ervin@email.com',\r\n    company: { name: 'Deckow-Crist' },\r\n  },\r\n]"
+            },
+            {
+                "name": "preview",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": ".storybook/preview.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "routes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.routes.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Routes",
+                "defaultValue": "[\r\n    {\r\n        path: '',\r\n        loadComponent: () =>\r\n          \"import('./features/users/users-page/users-page')\\r\\n\\\n            .then(m => m.UsersPage)\"\r\n    },\r\n    {\r\n        path: 'users/:id',\r\n        loadComponent: () =>\r\n          \"import('./features/users/user-details/user-details')\\r\\n\\\n            .then(m => m.UserDetails)\"\r\n    }\r\n]"
+            },
+            {
+                "name": "RowClick",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of(mockUsers),\r\n    loading: false,\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const row = canvasElement.querySelector('tbody tr');\r\n    row?.dispatchEvent(new MouseEvent('click', { bubbles: true }));\r\n  },\r\n}"
+            },
+            {
+                "name": "savedUsers",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "localStorage.getItem('users')"
+            },
+            {
+                "name": "selectAllUsers",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createSelector(\r\n  selectUsersState,\r\n  state => state.users\r\n)"
+            },
+            {
+                "name": "selectIsLoading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/loading/loading.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createSelector(\r\n  selectLoadingState,\r\n  (state) => state.loading\r\n)"
+            },
+            {
+                "name": "selectLoadingState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/loading/loading.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createFeatureSelector<LoadingState>('loading')"
+            },
+            {
+                "name": "selectUsersError",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createSelector(\r\n  selectUsersState,\r\n  state => state.error\r\n)"
+            },
+            {
+                "name": "selectUsersState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createFeatureSelector<UsersState>('users')"
+            },
+            {
+                "name": "startLoading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/loading/loading.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createAction('[Loading] Start')"
+            },
+            {
+                "name": "stopLoading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/store/loading/loading.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createAction('[Loading] Stop')"
+            },
+            {
+                "name": "usersReducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/features/users/store/users.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "createReducer(\r\n  initialState,\r\n  on(loadUsers, state => ({ ...state, error: null })),\r\n  on(loadUsersSuccess, (state, { users }) => ({ ...state, users })),\r\n  on(loadUsersFailure, (state, { error }) => ({ ...state, error }))\r\n)"
+            }
+        ],
+        "functions": [
+            {
+                "name": "localStorageMetaReducer",
+                "file": "src/app/store/meta-reducers/local-storage.metareducer.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "reducer",
+                        "type": "ActionReducer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "reducer",
+                        "type": "ActionReducer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SearchInput>",
+                "file": "src/stories/search-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<Table<UserMock>>",
+                "file": "src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Theme",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"light\" | \"dark\"",
+                "file": "src/app/shared/theme/theme.service.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\r\n  providers: [\r\n    provideBrowserGlobalErrorListeners(),\r\n    provideRouter(routes)\r\n  ]\r\n}"
+                }
+            ],
+            "src/stories/table.stories.ts": [
+                {
+                    "name": "columns",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  { key: 'name', label: 'Nome' },\r\n  { key: 'email', label: 'E-mail' },\r\n  { key: 'company.name', label: 'Empresa' },\r\n  { key: 'actions', label: 'Ações' },\r\n]"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of(mockUsers),\r\n    loading: false,\r\n  },\r\n}"
+                },
+                {
+                    "name": "EmptyState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of([]),\r\n    loading: false,\r\n  },\r\n}"
+                },
+                {
+                    "name": "Loading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of([]),\r\n    loading: true,\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<Table<UserMock>>",
+                    "defaultValue": "{\r\n  title: 'Shared/Table',\r\n  component: Table,\r\n}"
+                },
+                {
+                    "name": "mockUsers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UserMock[]",
+                    "defaultValue": "[\r\n  {\r\n    id: 1,\r\n    name: 'Leanne Graham',\r\n    email: 'leanne@email.com',\r\n    company: { name: 'Romaguera-Crona' },\r\n  },\r\n  {\r\n    id: 2,\r\n    name: 'Ervin Howell',\r\n    email: 'ervin@email.com',\r\n    company: { name: 'Deckow-Crist' },\r\n  },\r\n]"
+                },
+                {
+                    "name": "RowClick",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    dataColumn: columns,\r\n    dataTable$: of(mockUsers),\r\n    loading: false,\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const row = canvasElement.querySelector('tbody tr');\r\n    row?.dispatchEvent(new MouseEvent('click', { bubbles: true }));\r\n  },\r\n}"
+                }
+            ],
+            ".storybook/main.ts": [
+                {
+                    "name": "config",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": ".storybook/main.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StorybookConfig",
+                    "defaultValue": "{\r\n  stories: ['../src/**/*.stories.ts'],\r\n  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],\r\n\r\n  framework: {\r\n    name: '@storybook/angular',\r\n    options: {},\r\n  },\r\n\r\n  docs: {\r\n    autodocs: true\r\n  }\r\n}"
+                }
+            ],
+            "src/stories/search-input.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/search-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  render: (args) => ({\r\n    props: {\r\n      ...args,\r\n      control: new FormControl(''),\r\n    },\r\n    template: `\r\n      <app-search-input\r\n        [placeholder]=\"placeholder\"\r\n        [formControl]=\"control\">\r\n      </app-search-input>\r\n    `,\r\n  }),\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/search-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SearchInput>",
+                    "defaultValue": "{\r\n  title: 'Shared/SearchInput',\r\n  component: SearchInput,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule],\r\n    }),\r\n  ],\r\n  args: {\r\n    placeholder: 'Pesquisar...',\r\n  },\r\n}"
+                }
+            ],
+            "src/stories/user-card.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/user-card.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoryObj<UserCard>",
+                    "defaultValue": "{\r\n  args: {\r\n    title: 'Informações do usuário',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `\r\n      <app-user-card [title]=\"title\">\r\n        <div><strong>Nome:</strong> John Doe</div>\r\n      </app-user-card>\r\n    `,\r\n  }),\r\n}"
+                }
+            ],
+            "src/app/store/loading/loading.reducer.ts": [
+                {
+                    "name": "initialLoadingState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/loading/loading.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "LoadingState",
+                    "defaultValue": "{\r\n  loading: false\r\n}"
+                },
+                {
+                    "name": "loadingReducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/loading/loading.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createReducer(\r\n  initialLoadingState,\r\n  on(startLoading, () => ({ loading: true })),\r\n  on(stopLoading,  () => ({ loading: false }))\r\n)"
+                }
+            ],
+            "src/app/features/users/store/users.reducer.ts": [
+                {
+                    "name": "initialState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "UsersState",
+                    "defaultValue": "{\r\n  users: savedUsers ? JSON.parse(savedUsers) : [],\r\n  error: null\r\n}"
+                },
+                {
+                    "name": "savedUsers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "localStorage.getItem('users')"
+                },
+                {
+                    "name": "usersReducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createReducer(\r\n  initialState,\r\n  on(loadUsers, state => ({ ...state, error: null })),\r\n  on(loadUsersSuccess, (state, { users }) => ({ ...state, users })),\r\n  on(loadUsersFailure, (state, { error }) => ({ ...state, error }))\r\n)"
+                }
+            ],
+            "src/app/features/users/store/users.actions.ts": [
+                {
+                    "name": "loadUsers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createAction('[Users] Load')"
+                },
+                {
+                    "name": "loadUsersFailure",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createAction(\r\n    '[Users] Load Failure',\r\n    props<{ error: unknown }>()\r\n)"
+                },
+                {
+                    "name": "loadUsersSuccess",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createAction(\r\n    '[Users] Load Success',\r\n    props<{ users: User[] }>()\r\n)"
+                }
+            ],
+            ".storybook/preview.ts": [
+                {
+                    "name": "preview",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": ".storybook/preview.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+                }
+            ],
+            "src/app/app.routes.ts": [
+                {
+                    "name": "routes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.routes.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Routes",
+                    "defaultValue": "[\r\n    {\r\n        path: '',\r\n        loadComponent: () =>\r\n          \"import('./features/users/users-page/users-page')\\r\\n\\\n            .then(m => m.UsersPage)\"\r\n    },\r\n    {\r\n        path: 'users/:id',\r\n        loadComponent: () =>\r\n          \"import('./features/users/user-details/user-details')\\r\\n\\\n            .then(m => m.UserDetails)\"\r\n    }\r\n]"
+                }
+            ],
+            "src/app/features/users/store/users.selectors.ts": [
+                {
+                    "name": "selectAllUsers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createSelector(\r\n  selectUsersState,\r\n  state => state.users\r\n)"
+                },
+                {
+                    "name": "selectUsersError",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createSelector(\r\n  selectUsersState,\r\n  state => state.error\r\n)"
+                },
+                {
+                    "name": "selectUsersState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/features/users/store/users.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createFeatureSelector<UsersState>('users')"
+                }
+            ],
+            "src/app/store/loading/loading.selectors.ts": [
+                {
+                    "name": "selectIsLoading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/loading/loading.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createSelector(\r\n  selectLoadingState,\r\n  (state) => state.loading\r\n)"
+                },
+                {
+                    "name": "selectLoadingState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/loading/loading.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createFeatureSelector<LoadingState>('loading')"
+                }
+            ],
+            "src/app/store/loading/loading.actions.ts": [
+                {
+                    "name": "startLoading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/loading/loading.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createAction('[Loading] Start')"
+                },
+                {
+                    "name": "stopLoading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/store/loading/loading.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "createAction('[Loading] Stop')"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/app/store/meta-reducers/local-storage.metareducer.ts": [
+                {
+                    "name": "localStorageMetaReducer",
+                    "file": "src/app/store/meta-reducers/local-storage.metareducer.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "reducer",
+                            "type": "ActionReducer",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "reducer",
+                            "type": "ActionReducer",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/stories/search-input.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SearchInput>",
+                    "file": "src/stories/search-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "src/stories/table.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<Table<UserMock>>",
+                    "file": "src/stories/table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "src/app/shared/theme/theme.service.ts": [
+                {
+                    "name": "Theme",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"light\" | \"dark\"",
+                    "file": "src/app/shared/theme/theme.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "children": [
+            {
+                "name": "users/:id",
+                "kind": "route-path",
+                "filename": "src/app/app.routes.ts"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": ".storybook/main.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "config",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": ".storybook/preview.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.routes.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "routes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "App",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadUsers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadUsersFailure",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadUsersSuccess",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.effects.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UsersEffects",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.reducer.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "UsersState",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "savedUsers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "usersReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectAllUsers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectUsersError",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/store/users.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectUsersState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/user-details/user-details.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserDetails",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/users-page/users-page.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UsersPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/users.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UsersService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/users.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/footer/footer.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Footer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/header/header.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Header",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/loading-spinner/loading-spinner.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoadingSpinner",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/search-input/search-input.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SearchInput",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/table/table.models.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TableColumn",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/table/table.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Table",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/theme/theme.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ThemeService",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/theme/theme.service.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Theme",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/user-card/user-card.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserCard",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/loading/loading.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "startLoading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/loading/loading.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "stopLoading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/loading/loading.reducer.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "LoadingState",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/loading/loading.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialLoadingState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/loading/loading.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadingReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/loading/loading.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectIsLoading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/loading/loading.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectLoadingState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/store/meta-reducers/local-storage.metareducer.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "localStorageMetaReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/search-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/search-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/search-input.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "UserMock",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "columns",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EmptyState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Loading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "mockUsers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "RowClick",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/table.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/user-card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

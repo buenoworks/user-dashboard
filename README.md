@@ -35,6 +35,21 @@ src/app
 ├── shared
 └── store
 
+
+## Storybook
+
+O projeto possui Storybook configurado para documentação e visualização dos componentes reutilizáveis (shared).
+
+Durante a configuração, foi necessário realizar um ajuste adicional no `angular.json` e utilizar um `tsconfig` dedicado para o Storybook.  
+Isso ocorreu devido ao uso da versão mais recente do Angular (v21), que exige o uso do Angular Builder oficial do Storybook para correta compilação dos arquivos `.stories.ts` e `.storybook`.
+
+Após esses ajustes, o Storybook executa normalmente via:
+
+```bash
+ng run user-dashboard:storybook
+
+
+
 ## Executando o projeto
 
 ```bash
